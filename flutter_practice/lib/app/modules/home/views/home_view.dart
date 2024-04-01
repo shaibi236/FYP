@@ -50,9 +50,9 @@ class HomeView extends GetView<HomeController> {
                             text: TextSpan(
                               children: [
                                 const TextSpan(
-                                  text: 'Welcome\n',
+                                  text: 'Welcome!\n',
                                   style: TextStyle(
-                                    fontSize: 25,
+                                    fontSize: 27,
                                     color: Colors.white,
                                     fontFamily: 'monospace',
                                   ),
@@ -62,7 +62,7 @@ class HomeView extends GetView<HomeController> {
                                           .profileResponse?.user?.fullName ??
                                       'Name',
                                   style: const TextStyle(
-                                    fontSize: 30,
+                                    fontSize: 25,
                                     color: Colors.white,
                                     fontFamily: 'poppins',
                                     fontWeight: FontWeight.bold,
@@ -126,6 +126,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                         child: Text(
                           'Top Categories',
+
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -226,7 +227,9 @@ class HomeView extends GetView<HomeController> {
           Get.toNamed(Routes.ADD_VEHICLE);
         },
         child: const Icon(
+         
           Icons.add,
+         
         ),
       ),
     );

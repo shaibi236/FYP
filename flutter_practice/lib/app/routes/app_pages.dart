@@ -90,7 +90,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ADMIN_MAIN,
-      page: () => const AdminMainView(),
+      page: () => const MainScreen(),
       binding: AdminMainBinding(),
     ),
     GetPage(

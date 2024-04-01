@@ -1,46 +1,51 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/util/responsive.dart';
+import 'package:flutter_practice/widgets/dashboard_widget.dart';
+import 'package:flutter_practice/widgets/side_menu_widget.dart';
+import 'package:flutter_practice/widgets/summary_widget.dart';
 
+class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
 
-
-import 'package:get/get.dart';
-
-
-import '../../home/controllers/home_controller.dart';
-import '../controllers/admin_main_controller.dart';
-
-class AdminMainView extends GetView<AdminMainController> {
-  const AdminMainView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeController());
-    return Obx(
-      () => Scaffold(
-        body: controller.pages[controller.currentIndex.value],
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.red,
-            selectedIconTheme: const IconThemeData(
-              color: Colors.blue,
+    final isDesktop = Responsive.isDesktop(context);
+
+    return Scaffold(
+      drawer: !isDesktop
+          ? const SizedBox(
+              width: 250,
+              child: SideMenuWidget(),
+            )
+          : null,
+      endDrawer: Responsive.isMobile(context)
+          ? SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: const SummaryWidget(),
+            )
+          : null,
+      body: SafeArea(
+        child: Row(
+          children: [
+            if (isDesktop)
+              Expanded(
+                flex: 2,
+                child: SizedBox(
+                  child: SideMenuWidget(),
+                ),
+              ),
+            Expanded(
+              flex: 7,
+              child: DashboardWidget(),
             ),
-            unselectedIconTheme: const IconThemeData(
-              color: Colors.grey,
-            ),
-            showUnselectedLabels: true,
-            selectedItemColor: Colors.blue,
-            unselectedItemColor: Colors.grey,
-            currentIndex: controller.currentIndex.value,
-            onTap: (index) {
-              controller.currentIndex.value = index;
-            },
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home), label: 'Dashboard'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.category), label: 'Categories'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.history), label: 'History'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: 'Profile'),
-            ]),
+            if (isDesktop)
+              Expanded(
+                flex: 3,
+                child: SummaryWidget(),
+              ),
+          ],
+        ),
       ),
     );
   }

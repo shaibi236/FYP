@@ -10,6 +10,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.teal,
           title: const Text('ChangePasswordView'),
           centerTitle: true,
         ),
@@ -51,8 +52,17 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                     height: 20,
                   ),
                   ElevatedButton(
-                      onPressed: (controller.onchangePassword),
-                      child: Text('change password')),
+  onPressed: () {
+    if (controller.formKey.currentState!.validate()) {
+      controller.onchangePassword();
+    }
+  },
+  style: ElevatedButton.styleFrom(
+    primary: Colors.black, // Set the background color here
+  ),
+  child: Text('Change Password'),
+),
+
                 ],
               ),
             ),

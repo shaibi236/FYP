@@ -16,6 +16,7 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   intl: ^0.18.0
   khalti_flutter: ^3.0.0
+  fl_chart: ^0.67.0
   flutter_rating_bar: ^4.0.1
   lottie: ^3.0.0
   flutter_translate: ^4.0.4
@@ -31,6 +32,7 @@ flutter:
   assets:
     - assets/images/
     - assets/lottie/
+    - assets/icons/
 
 
 

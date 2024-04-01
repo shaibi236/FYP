@@ -78,7 +78,7 @@ class ProfileView extends GetView<ProfileController> {
                       trailing: const Icon(Icons.arrow_forward_ios),
                       onTap: () {
                         
-      Get.to(Routes.EDIT_PROFILE);
+      Get.toNamed(Routes.EDIT_PROFILE);
                         }
                     ),
                   ),
